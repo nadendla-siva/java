@@ -1,5 +1,7 @@
 package com.spring.validation.model;
 
+import java.sql.Blob;
+
 import org.springframework.stereotype.Component;
 
 @Component

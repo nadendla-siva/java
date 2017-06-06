@@ -20,4 +20,9 @@
         <definition name="LoginSuccess" extends="login">
             <put-attribute name="register" value="/WEB-INF/views/LoginSuccess.jsp"/>
         </definition>
+        
+        <definition name="saveInst" template="/WEB-INF/views/institutions.jsp">
+            <put-attribute name="title" value="Tiles Using with Spring"/>
+        </definition>
+        
     </tiles-definitions>   

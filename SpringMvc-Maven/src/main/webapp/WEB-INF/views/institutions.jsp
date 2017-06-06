@@ -18,12 +18,13 @@
       width: 60%;
     }
 </style>
+ <tiles:insertAttribute name="title"/>
 </head>
 <body>
     <div align="center">
         <h3>Spring MVC Form Validation Demo - Institutions Form</h3>
         <table border="0" width="90%">
-        <form:form action="institutes" commandName="instForm">
+        <form:form action="saveInst" commandName="instForm">
                  <tr>
                     <td align="left"><form:input path="name" size="30" placeholder="InstName" class="form-controller"/></td>
                     <td align="left"><form:errors path="name" cssClass="error"/></td>

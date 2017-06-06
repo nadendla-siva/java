@@ -35,7 +35,7 @@ public class LoginController {
 	public void setRegisterService(RegisterService registerService) {
 		this.registerService = registerService;
 	}
-	@RequestMapping(value = "/tiles-layout", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String tilesLayout(Map<String, Object> model) {
 		User user = new User();
         model.put("userForm", user);

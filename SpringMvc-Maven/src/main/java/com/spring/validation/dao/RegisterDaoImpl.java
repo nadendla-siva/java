@@ -32,7 +32,6 @@ public class RegisterDaoImpl implements RegisterDao{
 		Transaction transaction=session.beginTransaction();
 		session.save(registerEntity);
 		transaction.commit();
-		
 	}
 	public RegisterEntity getLogin(String email) {
 		logger.debug("get() in RegistrationDao Class"); 
