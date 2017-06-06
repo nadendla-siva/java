@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd   
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+ 
+    <mvc:annotation-driven />
+    <context:component-scan base-package="com.spring.validation" />
+    <context:annotation-config/>
+    <mvc:resources mapping="/resources/**" location="/resources/img" />
+    
+    <!-- <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean> -->
+    
+    
+    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value = "org.springframework.web.servlet.view.tiles2.TilesView"/>
+    </bean>
+    <bean id="tilesConfigure" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/messages" />
+    </bean>
+    
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">  
+        <property name="driverClassName"  value="com.mysql.jdbc.Driver"></property>  
+        <property name="url" value="jdbc:mysql://localhost:3306/test"></property>  
+        <property name="username" value="root"></property>  
+        <property name="password" value="siva"></property>  
+    </bean> 
+    
+    <bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.spring.validation.entity.RegisterEntity</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">  
+            <props>  
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>  
+                <prop key="hibernate.hbm2ddl.auto">update</prop>  
+                <prop key="hibernate.show_sql">true</prop>  
+                <prop key="hibernate.current_session_context_class">thread</prop>
+            </props>  
+        </property>
+	 </bean> 
+	
+    <!--  <bean id="loginController" class="com.spring.validation.controller.LoginController">
+		<property name="registerService" ref="registerService" />
+	</bean>
+	<bean id="registerService" class="com.spring.validation.service.RegisterServiceImpl">
+		<property name="registerDao" ref="registerDao" />
+	</bean>
+     
+    <bean id="registerDao" class="com.spring.validation.dao.RegisterDaoImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</bean> -->
+</beans>
