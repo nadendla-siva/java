@@ -52,6 +52,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.spring.validation.entity.RegisterEntity</value>
+				<value>com.spring.validation.entity.InstEntity</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">  

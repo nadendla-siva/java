@@ -54,4 +54,23 @@ public class InstituteController {
 		return "saveInst";
 	}
 
+	
+	@RequestMapping(value="/getInst", method=RequestMethod.GET)
+	public String getInst(Map<String, Object> model){
+		
+		InstitutionsModel instModel=new InstitutionsModel();
+		
+		InstEntity instEntity=instService.getInst("rcm-college");
+		System.out.println(instEntity.getName());
+		model.put("name",instEntity.getName());
+		model.put("description",instEntity.getDescription());
+		model.put("anchor",instEntity.getAnchor());
+		model.put("anchor", instEntity.getAnchor());
+		model.put("state", instEntity.getState());
+		model.put("city", instEntity.getCity());
+		model.put("logo", instEntity.getLogo());
+		return "getInst";
+		
+	}
 }
+
