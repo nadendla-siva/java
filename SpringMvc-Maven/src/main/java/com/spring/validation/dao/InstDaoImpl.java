@@ -1,5 +1,7 @@
 package com.spring.validation.dao;
 
+import java.sql.Blob;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

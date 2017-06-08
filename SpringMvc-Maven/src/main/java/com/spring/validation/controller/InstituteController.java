@@ -54,7 +54,7 @@ public class InstituteController {
 		return "saveInst";
 	}
 	
-	@RequestMapping(value="/getInst", method=RequestMethod.GET)
+	@RequestMapping(value="/colleges", method=RequestMethod.GET)
 	public String getInst(Map<String, Object> model){
 		
 		InstitutionsModel instModel=new InstitutionsModel();
@@ -68,7 +68,7 @@ public class InstituteController {
 		model.put("state", instEntity.getState());
 		model.put("city", instEntity.getCity());
 		model.put("logo", instEntity.getLogo());
-		return "getInst";
+		return "colleges";
 		
 	}
 }

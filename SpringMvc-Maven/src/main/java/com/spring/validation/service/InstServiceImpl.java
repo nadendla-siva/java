@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Blob;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +57,8 @@ public class InstServiceImpl implements InstService{
 	@Override
 	public InstEntity getInst(String anchor) {
 		InstEntity instEntity=instDao.getInst(anchor);
-		byte[] logoByte=instEntity.getLogo();
+		byte[] logoByte=new byte[instEntity.getLogo().length];
 		System.out.println(logoByte);
-		
 		FileOutputStream out;
 		try {
 			out = new FileOutputStream("D:\\gitrepository\\java\\SpringwithHB\\SpringMvc-Maven\\src\\main\\webapp\\resources\\img\\proba.jpg");

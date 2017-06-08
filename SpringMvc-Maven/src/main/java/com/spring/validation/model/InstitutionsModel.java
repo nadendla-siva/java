@@ -1,11 +1,12 @@
 package com.spring.validation.model;
 
-import java.sql.Blob;
+
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class InstitutionsModel {
+	
 	private String name;
 	private String description;
 	private String state;
