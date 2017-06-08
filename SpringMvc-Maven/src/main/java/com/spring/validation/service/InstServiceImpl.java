@@ -3,6 +3,7 @@ package com.spring.validation.service;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
@@ -19,6 +20,7 @@ public class InstServiceImpl implements InstService{
 	@Autowired
 	private  InstDao instDao;
 	FileInputStream fis;
+	byte[] bfile;
 
 	public void setInstDao(InstDao instDao) {
 		this.instDao = instDao;
@@ -29,7 +31,7 @@ public class InstServiceImpl implements InstService{
 	public void saveInst(InstEntity instEntity) {
 		
 		File image = new File("D:/rcm.jpg");
-		byte[] bfile=new byte[(int) image.length()];
+		bfile=new byte[(int) image.length()];
 		try {
 			fis = new FileInputStream(image);
 			fis.read(bfile);
@@ -53,6 +55,26 @@ public class InstServiceImpl implements InstService{
 	}
 	@Override
 	public InstEntity getInst(String anchor) {
-		return instDao.getInst(anchor);
+		InstEntity instEntity=instDao.getInst(anchor);
+		byte[] logoByte=instEntity.getLogo();
+		System.out.println(logoByte);
+		
+		FileOutputStream out;
+		try {
+			out = new FileOutputStream("D:\\gitrepository\\java\\SpringwithHB\\SpringMvc-Maven\\src\\main\\webapp\\resources\\img\\proba.jpg");
+			int readBytes = 0;
+			while ((readBytes = fis.read(logoByte)) > 0) {
+				System.out.println("Whileeeeeee.......");
+			  out.write(logoByte,0,readBytes);
+			}
+			out.flush();
+			out.close();
+			fis.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return instEntity;
 	}
-}
+ }

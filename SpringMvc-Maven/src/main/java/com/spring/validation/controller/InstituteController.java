@@ -53,7 +53,6 @@ public class InstituteController {
 		instService.saveInst(instEntity);
 		return "saveInst";
 	}
-
 	
 	@RequestMapping(value="/getInst", method=RequestMethod.GET)
 	public String getInst(Map<String, Object> model){
