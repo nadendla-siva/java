@@ -53,6 +53,7 @@
 			<list>
 				<value>com.spring.validation.entity.RegisterEntity</value>
 				<value>com.spring.validation.entity.InstEntity</value>
+				<value>com.spring.validation.entity.CourseEntity</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">  

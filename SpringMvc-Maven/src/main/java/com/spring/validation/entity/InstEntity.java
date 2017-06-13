@@ -1,19 +1,26 @@
 package com.spring.validation.entity;
 
+import java.io.Serializable;
 import java.sql.Blob;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.stereotype.Repository;
 
 @Entity
 @Repository
 @Table(name="edu_insts")
-public class InstEntity {
+public class InstEntity implements Serializable{
 	
 	@Column(length=20)
 	private String name;
@@ -31,6 +38,17 @@ public class InstEntity {
 	@Lob
 	private byte[] logo;
 	
+	@OneToMany(fetch=FetchType.LAZY,targetEntity=CourseEntity.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="college_id_ref",referencedColumnName="inst_id")
+	private Set<CourseEntity> courseList;
+	
+	
+	public Set<CourseEntity> getCourseList() {
+		return courseList;
+	}
+	public void setCourseList(Set<CourseEntity> courseList) {
+		this.courseList = courseList;
+	}
 	public String getName() {
 		return name;
 	}
