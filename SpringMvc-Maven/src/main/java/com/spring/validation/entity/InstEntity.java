@@ -30,15 +30,15 @@ public class InstEntity implements Serializable{
 	private String city;
 	@Column(length=20)
 	private String state;
+	@Id
 	@Column(length=20)
 	private String inst_id;
 	@Column(length=40)
-	@Id
 	private String anchor;
 	@Lob
 	private byte[] logo;
 	
-	@OneToMany(fetch=FetchType.LAZY,targetEntity=CourseEntity.class,cascade=CascadeType.ALL)
+	@OneToMany(targetEntity=CourseEntity.class, fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="college_id_ref",referencedColumnName="inst_id")
 	private Set<CourseEntity> courseList;
 	

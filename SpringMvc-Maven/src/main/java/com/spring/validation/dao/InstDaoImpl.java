@@ -1,6 +1,5 @@
 package com.spring.validation.dao;
 
-import java.sql.Blob;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,27 +26,32 @@ public class InstDaoImpl implements InstDao{
 	@Override
 	public void saveInst(InstEntity instEntity) {
 		 CourseEntity courseEntity= new CourseEntity();
-		 courseEntity.setCollegeName(instEntity.getName());
+		 courseEntity.setCollegeName("nalanda");
 		 courseEntity.setCourseName("MBA");
 		 courseEntity.setCourseId("1");
 		 courseEntity.setLevel("PG");
-		 
+		 System.out.println("CourseEntity..."+courseEntity );
 		 CourseEntity courseEntity1= new CourseEntity();
-		 courseEntity.setCollegeName(instEntity.getName());
+		 courseEntity.setCollegeName("nalanda");
 		 courseEntity.setCourseName("MCA");
 		 courseEntity.setCourseId("2");
 		 courseEntity.setLevel("PG");
 		
-		   Set courses=new HashSet();
+		 System.out.println("CourseEntity..."+courseEntity1);
+		   Set<CourseEntity> courses=new HashSet<CourseEntity>();
 		   courses.add(courseEntity1);
 		   courses.add(courseEntity);
 		   instEntity.setCourseList(courses);
 		   
 		Session session=this.sessionFactory.getCurrentSession();
 		   Transaction transaction=session.beginTransaction();
+		   System.out.println("before Save....");
+		   System.out.println(instEntity.getCourseList());
 		   session.save(instEntity);
+		   System.out.println("after Save..........");
 		   transaction.commit();
 		   session.close();
+		   
 	  }
 
 	@Override
