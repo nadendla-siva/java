@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Angular JS Learning</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
+</head>
+<body ng-app="myApp">
+  <div ng-controller="myController" class="container">
+  <div class="row"> 
+    <div class="title"><h3>{{message}}</h3></div>
+  	<div class="col-md-4" ng-repeat="item in items">
+  		<div class="thumbnail">
+  		 	<img src="{{item.item_image}}" class="img-responsive"/>
+  		 	<div class="common-price-cart">
+  			 <div class="item_price pull-left">Price : {{item.item_price}}</div>
+  			 <a class="btn btn-primary pull-right" ng-click="addCart($index)">Add to Cart</a>
+  			 </div>
+  		</div>
+  	</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+   <div class="panel panel-default">
+   <div class="panel-heading">
+    <div class="panel-title"><h3>{{cartItems}}</h3></div>
+    </div>
+     <div class="panel-body" ng-repeat="cartitems in cart">
+     <div class="cart-items-display">
+           <img src="{{cartitems.item_image}}">
+           <div class="btn btn-primary  cart-item-price"> {{cartitems.item_price}}/-</div>
+           <a class="btn btn-danger" ng-click="removeItem($index)"> Remove from Cart </a>
+       </div>
+     </div>
+      <h3> total price : {{getTotal()}}</h3>
+    </div>
+  </div>
+  </div>
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="js/angular.min.js"></script>
+<!-- <script type="text/javascript" src="js/myApp.js"></script> -->
+<script>
+  var app=angular.module("myApp", []);
+   app.controller("myController", function($scope) {
+	 $scope.message="Please Select Items"; 
+	  $scope.items = [
+					{
+						 "item_id" : 1,
+						 "item_name" : "mobile",
+						 "item_image" : "img/phone.jpg",
+						 "item_price"  : 9999
+					  },
+					  {
+						   "item_id" : 2,
+						   "item_name" : "Laptop",
+						   "item_image" : "img/laptop.jpg",
+						   "item_price" : 29999
+					  },
+					  {
+						   "item_id" : 3,
+						   "item_name" : "TV",
+						   "item_image" : "img/tv.jpg",
+						   "item_price" : 19999
+					  }
+				   ];
+	  
+	    $scope.cartItems="items in cart";
+	    $scope.cart=[];
+	    $scope.addCart=function(itemIndex){
+	     $scope.cart.push($scope.items[itemIndex]);
+	    }
+	    
+	    $scope.removeItem=function(itemIndex){
+	    	$scope.cart.splice(itemIndex);
+	    }
+	    
+	    $scope.getTotal=function(){
+	    	var total=0;
+	     angular.forEach($scope.cart,function(value){
+	    	 total=total+value.item_price;
+	    	 
+	     })
+	     return total;
+	    	
+	    }
+       })
+  
+</script>
+</body>
+</html>

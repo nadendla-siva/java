@@ -1,0 +1,44 @@
+
+.title{
+	padding : 25px 0;
+	background-color: fuchsia;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+	
+}
+.cart-items{
+	padding: 25px 0;
+	background-color: gray;
+	text-align: center;
+	text-transform: uppercase;
+	
+}
+.thumbnail{
+	height: 260px;
+}
+.common-price-cart{
+	display: block;
+    overflow: hidden;
+    border: 1px green;
+    padding: 20px 0;
+    background-color: lightblue;
+}
+
+.item_price{
+	font-size: 18px;
+}
+.panel-title{
+	 text-align: center;
+	 font-size: 30px;
+	 text-transform: uppercase;
+}
+.cart-items-display{
+	display: block;
+	overflow: hidden;
+	padding: 20px;
+}
+.cart-item-price{
+	 font-size: 20px;
+	 
+}
